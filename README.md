@@ -41,7 +41,6 @@ selenium_pom_framework/
 │
 ├── .env.example            # Example environment variables
 ├── .python-version         # Python version specification
-├── requirements.txt        # Dependencies
 └── README.md               # Documentation
 ```
 
