@@ -1,0 +1,13 @@
+[project]
+name = "test-automation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.3"
+dependencies = [
+    "black>=25.1.0",
+    "pytest>=8.3.5",
+    "pytest-html>=4.1.1",
+    "selenium>=4.32.0",
+    "webdriver-manager>=4.0.2",
+]
