@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from utils.config import Config
 
 class LoginPage(BasePage):
     """Page object for login page"""
@@ -21,13 +22,17 @@ class LoginPage(BasePage):
     
     def __init__(self, driver):
         super().__init__(driver)
-        self.url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+        self.url = Config.BASE_URL
     
     def open(self):
         """Open the login page"""
         self.visit(self.url)
         return self
     
+    def is_login_page_loaded(self):
+        """Check if login page is loaded"""
+        return self.is_displayed(self.USERNAME_FIELD)
+
     def enter_username(self, username):
         """Enter username in the username field"""
         self.input_text(self.USERNAME_FIELD, username)
@@ -38,11 +43,17 @@ class LoginPage(BasePage):
         self.input_text(self.PASSWORD_FIELD, password)
         return self
     
+    def click_login(self):
+        """Click the login button"""
+        self.click(self.LOGIN_BUTTON)
+        from pages.dashboard_page import DashboardPage
+        return DashboardPage(self.driver)
+    
     def login(self, username, password):
         """Perform full login flow"""
         self.enter_username(username)
         self.enter_password(password)
-        return self.click(self.LOGIN_BUTTON)
+        return self.click_login()
     
     def get_error_message(self):
         """Get login error message text"""

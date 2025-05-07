@@ -1,13 +1,14 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from utils.config import Config
 
 class BasePage:
     """Base class for all page objects with common methods"""
     
     def __init__(self, driver):
         self.driver = driver
-        self.timeout = 20 # Had to increase the timeout to 20 seconds to avoid timeout errors
+        self.timeout =  Config.DEFAULT_TIMEOUT
     
     def visit(self, url):
         """Navigate to the specified URL"""
