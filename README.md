@@ -68,7 +68,7 @@ selenium_pom_framework/
 
 3. Install dependencies using uv:
    ```bash
-   uv pip install -r requirements.txt
+   uv sync
    ```
 
 ## Configuration
