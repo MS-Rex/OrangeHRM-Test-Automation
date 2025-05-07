@@ -55,8 +55,8 @@ selenium_pom_framework/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/OrangeHRM-test-automation.git
-   cd OrangeHRM-test-automation
+   git clone https://github.com/MS-Rex/OrangeHRM-Test-Automation/tree/main
+   cd OrangeHRM-Test-Automation
    ```
 
 2. Set up Python environment (if using pyenv):
