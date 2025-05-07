@@ -18,3 +18,4 @@ class Config:
     DEFAULT_TIMEOUT = int(
         os.getenv("DEFAULT_TIMEOUT", "10")
     )  # Had to increase the timeout to 20 seconds to avoid timeout errors
+    HEADLESS = os.getenv("HEADLESS", "True").lower() == "true"
