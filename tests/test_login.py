@@ -3,6 +3,17 @@ from pages.login_page import LoginPage
 class TestLogin:
     """Test suite for login functionality"""
     
+    def test_login_page_title(self, driver):
+        """Test login page title"""
+        # Arrange
+        login_page = LoginPage(driver)
+        
+        # Act
+        login_page.open()
+        
+        # Assert
+        assert "OrangeHRM" in driver.title, "Login page title is incorrect"
+
     def test_successful_login(self, driver):
         """Test successful login with valid credentials"""
         # Arrange
