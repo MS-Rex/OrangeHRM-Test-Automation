@@ -55,7 +55,7 @@ selenium_pom_framework/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/MS-Rex/OrangeHRM-Test-Automation/tree/main
+   git clone https://github.com/MS-Rex/OrangeHRM-Test-Automation.git
    cd OrangeHRM-Test-Automation
    ```
 
