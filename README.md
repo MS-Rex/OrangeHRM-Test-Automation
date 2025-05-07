@@ -125,7 +125,7 @@ You can access the HTML test reports in several ways:
 
 2. **HTML Preview** (works on GitHub):
    ```
-   [View Latest Test Report](https://htmlpreview.github.io/?https://github.com/MS-Rex/OrangeHRM-Test-Automation/tree/main/main/reports/report.html)
+   [View Latest Test Report](https://ms-rex.github.io/OrangeHRM-Test-Automation/reports/report.html?sort=result)
    ```
 
 ## CI/CD Integration
