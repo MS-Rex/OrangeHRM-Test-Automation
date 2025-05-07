@@ -5,50 +5,49 @@ name: Run Selenium Tests
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Read Python version from .python-version
-      id: python-version
-      run: echo "version=$(cat .python-version)" >> $GITHUB_OUTPUT
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ steps.python-version.outputs.version }}
-        
-    - name: Install uv
-      run: |
-        curl -LsSf https://astral.sh/uv/install.sh | sh
-        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
-        
-    - name: Install dependencies with uv
-      run: |
-        uv sync
-        
-    - name: Add environment variables to .env
-      run: |
-        echo "ORANGEHRM_USERNAME=${{ secrets.ORANGEHRM_USERNAME }}" > .env
-        echo "ORANGEHRM_PASSWORD=${{ secrets.ORANGEHRM_PASSWORD }}" >> .env
-        echo "ORANGEHRM_URL=${{ secrets.ORANGEHRM_URL }}" >> .env
-        echo "HEADLESS=True" >> .env
-        
-    - name: Run tests with pytest
-      run: |
-        uv run pytest --html=report.html --self-contained-html
-        
-    - name: Upload test report
-      uses: actions/upload-artifact@v4
-      if: always()  # Upload report even if tests fail
-      with:
-        name: test-report
-        path: reports/report.html
 
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Read Python version from .python-version
+        id: python-version
+        run: echo "version=$(cat .python-version)" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ steps.python-version.outputs.version }}
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies with uv
+        run: |
+          uv sync
+
+      - name: Add environment variables to .env
+        run: |
+          echo "ORANGEHRM_USERNAME=${{ secrets.ORANGEHRM_USERNAME }}" > .env
+          echo "ORANGEHRM_PASSWORD=${{ secrets.ORANGEHRM_PASSWORD }}" >> .env
+          echo "ORANGEHRM_URL=${{ secrets.ORANGEHRM_URL }}" >> .env
+          echo "HEADLESS=True" >> .env
+
+      - name: Run tests with pytest
+        run: |
+          uv run pytest --html=reports/report.html --self-contained-html
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        if: always() # Upload report even if tests fail
+        with:
+          name: test-report
+          path: reports/report.html
