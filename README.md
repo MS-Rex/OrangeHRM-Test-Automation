@@ -99,7 +99,7 @@ uv run pytest
 ### Run with HTML report:
 
 ```bash
-uv run pytest --html=report.html --self-contained-html
+uv run pytest --html=reports/report.html --self-contained-html
 ```
 
 ### Run specific test file:
@@ -113,6 +113,21 @@ uv run pytest tests/test_login.py
 ```bash
 uv run pytest --browser=chrome
 ```
+
+### Accessing Reports
+
+You can access the HTML test reports in several ways:
+
+1. **Direct Link** (works when viewing repo locally):
+
+   ```
+   [View Latest Test Report](./reports/report.html)
+   ```
+
+2. **HTML Preview** (works on GitHub):
+   ```
+   [View Latest Test Report](https://htmlpreview.github.io/?https://github.com/MS-Rex/OrangeHRM-Test-Automation/tree/main/main/reports/report.html)
+   ```
 
 ## CI/CD Integration
 
